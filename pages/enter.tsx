@@ -30,7 +30,7 @@ export default function Enter() {
     enter(validForm);
   };
   const onInvalid = (errors: FieldErrors) => {};
-  console.log('loading :', loading, 'data :', data, 'error :', error);
+
   return (
     <main className='max-w-md mx-auto bg-white p-4 flex flex-col justify-center min-h-screen'>
       <h1 className='text-center text-2xl font-bold mb-10'>
@@ -72,15 +72,12 @@ export default function Enter() {
             {tab === 'email' && errors?.email?.message}
             {tab === 'phone' && errors?.phone?.message}
           </span>
-          <SquareBtn
-            name={
-              tab === 'email'
-                ? '로그인 링크 보내기'
-                : tab === 'phone'
-                ? '1회용 비밀번호 받기'
-                : ''
-            }
-          />
+          {tab === 'email' && (
+            <SquareBtn name={loading ? 'Loading' : '로그인 링크 보내기'} />
+          )}
+          {tab === 'phone' && (
+            <SquareBtn name={loading ? 'Loading' : '1회용 비밀번호 받기'} />
+          )}
         </form>
         <div className='relative mt-12 w-full'>
           <div className='absolute w-full border-t border-gray-500' />
