@@ -1,14 +1,13 @@
-import { cls } from '@/libs/utils';
+import { cls } from '@/libs/client/utils';
 import { tabType } from '@/pages/enter';
 
 interface ITabBtnProps {
   tab: string;
-  setTab: (tab: tabType) => void;
+  onTabClick: (tab: tabType) => void;
   name: 'Email' | 'Phone';
 }
 
-const TabBtn = ({ tab, setTab, name }: ITabBtnProps) => {
-  const onTabClick = (type: tabType) => setTab(type);
+const TabBtn = ({ tab, onTabClick, name }: ITabBtnProps) => {
   return (
     <button
       className={cls(

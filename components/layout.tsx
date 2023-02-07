@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
 import Nav from './navigation';
-import { cls } from '../libs/utils';
+import { cls } from '../libs/client/utils';
 
 interface LayoutProps {
   title?: string;

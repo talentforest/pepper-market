@@ -1,4 +1,4 @@
-import { cls } from '@/libs/utils';
+import { cls } from '@/libs/client/utils';
 
 export interface ICircleBtnProps {
   route: 'home' | 'community' | 'live' | 'sold' | 'loved' | 'bought';
