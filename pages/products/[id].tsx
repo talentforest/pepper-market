@@ -1,15 +1,15 @@
-import ItemDescription from '@/components/itemDescription';
+import ProductDesc from '@/components/productDesc';
 import Layout from '@/components/layout';
 import UserBox from '@/components/userBox';
 import type { NextPage } from 'next';
 
-const ItemDetail: NextPage = () => {
+const ProductDetail: NextPage = () => {
   return (
     <Layout hasTabBar canGoBack title='물건 상세보기'>
       <section className='mb-8'>
         <div className='h-96 bg-slate-300 mb-3' />
         <UserBox size='md' type='link' />
-        <ItemDescription
+        <ProductDesc
           itemName='갤럭시 S50'
           description='좋은 가격에 판매하고 있습니다. 라이브로 기기의 상태를 보여드리고 있으니 많이많이 들러주세요 ㅎㅎ 자 이제 조금 있으면 시작합니다. 시작 가격은 50만원부터 시작하겠습니다! 상태가 정말 좋거든요 쓴 지 정말 얼마 안됐어요.'
           price={500400}
@@ -30,4 +30,4 @@ const ItemDetail: NextPage = () => {
     </Layout>
   );
 };
-export default ItemDetail;
+export default ProductDetail;

@@ -1,6 +1,6 @@
-import Input from '@/components/input';
+import Input from '@/components/input/input';
 import Layout from '@/components/layout';
-import SquareBtn from '@/components/squareBtn';
+import SquareBtn from '@/components/button/squareBtn';
 import type { NextPage } from 'next';
 
 const EditProfile: NextPage = () => {

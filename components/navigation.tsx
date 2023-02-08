@@ -69,11 +69,8 @@ export default function Nav() {
             <span>채팅</span>
           </Link>
         </li>
-        <li className={getCurPathStyle('/streams')}>
-          <Link
-            href='/streams'
-            className='flex flex-col items-center space-y-1'
-          >
+        <li className={getCurPathStyle('/live')}>
+          <Link href='/live' className='flex flex-col items-center space-y-1'>
             <svg
               className='h-5 w-5'
               fill='none'

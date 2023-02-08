@@ -1,6 +1,6 @@
 import IconBox from './iconBox';
 
-const Item = () => {
+const Product = () => {
   return (
     <li className='flex cursor-pointer justify-between border-b pb-5 last:border-none'>
       <div className='flex space-x-4'>
@@ -19,4 +19,4 @@ const Item = () => {
   );
 };
 
-export default Item;
+export default Product;

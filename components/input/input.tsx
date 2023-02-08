@@ -6,7 +6,7 @@ interface InputProps {
   type: 'text' | 'email' | 'number';
   required?: boolean;
   placeholder?: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
 }
 
 const Input = ({

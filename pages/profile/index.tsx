@@ -1,4 +1,4 @@
-import CircleBtn from '@/components/circleBtn';
+import CircleBtn from '@/components/button/circleBtn';
 import Layout from '@/components/layout';
 import UserBox from '@/components/userBox';
 import { NextPage } from 'next';

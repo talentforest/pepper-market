@@ -4,7 +4,7 @@ interface IItemDescriptionProps {
   price: number;
 }
 
-const ItemDescription = ({
+const ProductDesc = ({
   itemName,
   description,
   price,
@@ -20,4 +20,4 @@ const ItemDescription = ({
   );
 };
 
-export default ItemDescription;
+export default ProductDesc;

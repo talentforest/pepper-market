@@ -1,8 +1,8 @@
 import IconBox from '@/components/iconBox';
 import Layout from '@/components/layout';
-import SquareBtn from '@/components/squareBtn';
+import SquareBtn from '@/components/button/squareBtn';
 import Tag from '@/components/tag';
-import Textarea from '@/components/textarea';
+import Textarea from '@/components/input/textarea';
 import UserBox from '@/components/userBox';
 import type { NextPage } from 'next';
 
@@ -26,7 +26,7 @@ const CommunityPostDetail: NextPage = () => {
         </div>
         <div>
           <Textarea placeholder='질문에 대한 답을 아신다면 댓글을 달아주세요!' />
-          <SquareBtn name='답장하기' />
+          <SquareBtn name='답장하기' canSubmit />
         </div>
       </div>
     </Layout>

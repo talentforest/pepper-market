@@ -1,7 +1,7 @@
-import Input from '@/components/input';
+import Input from '@/components/input/input';
 import Layout from '@/components/layout';
-import SquareBtn from '@/components/squareBtn';
-import Textarea from '@/components/textarea';
+import SquareBtn from '@/components/button/squareBtn';
+import Textarea from '@/components/input/textarea';
 import type { NextPage } from 'next';
 
 const Upload: NextPage = () => {
@@ -32,7 +32,7 @@ const Upload: NextPage = () => {
           labelId='detail'
           labelName='상세설명'
         />
-        <SquareBtn name='아이템 업로드' />
+        <SquareBtn name='아이템 업로드' canSubmit />
       </form>
     </Layout>
   );
