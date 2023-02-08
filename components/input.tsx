@@ -5,6 +5,7 @@ interface InputProps {
   labelId: 'email' | 'phone' | 'name' | 'price';
   type: 'text' | 'email' | 'number';
   required?: boolean;
+  placeholder?: string;
   register: UseFormRegisterReturn;
 }
 
@@ -14,6 +15,7 @@ const Input = ({
   labelName,
   required,
   register,
+  placeholder,
 }: InputProps) => {
   return (
     <div className='space-y-1'>
@@ -26,6 +28,7 @@ const Input = ({
             id={labelId}
             type={type}
             required={required}
+            placeholder={placeholder}
             className={
               'w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange-500 focus:outline-none focus:ring-orange-500'
             }
@@ -38,9 +41,10 @@ const Input = ({
           <input
             id='핸드폰 번호'
             type='number'
+            placeholder='01012345678'
             required={required}
             {...register}
-            className='peer w-full pl-14 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-500 shadow-sm focus:border-orange-500 focus:ring-orange-400'
+            className='placeholder:text-gray-400 tracking-wide peer w-full pl-14 appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-500 shadow-sm focus:border-orange-500 focus:ring-orange-400'
           />
           <span className='peer-focus:border-orange-500 peer-focus:border-r-gray-300 absolute inset-y-0 flex select-none items-center justify-center rounded-l-md border border-r border-gray-300 bg-gray-50 px-3 text-sm text-gray-500'>
             +82
