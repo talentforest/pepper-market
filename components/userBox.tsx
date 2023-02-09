@@ -6,12 +6,15 @@ interface IUserBoxProps {
   type: 'star' | 'link' | 'btn' | 'time';
   time?: number;
   size: 'xs' | 'sm' | 'md' | 'lg';
+  avatar: string;
+  username: string;
 }
 
-const UserBox = ({ size, type, time }: IUserBoxProps) => {
+const UserBox = ({ size, type, time, avatar, username }: IUserBoxProps) => {
   return (
     <header className='py-2 w-full flex items-center space-x-2'>
-      <div
+      <img
+        src={avatar}
         className={cls(
           size === 'xs'
             ? 'h-9 w-9'
@@ -40,7 +43,7 @@ const UserBox = ({ size, type, time }: IUserBoxProps) => {
             'font-bold  text-gray-900'
           )}
         >
-          스티브 쟙
+          {username}
         </span>
         {type === 'link' && (
           <Link href={'/profile'} className='text-xs text-gray-500 font-medium'>

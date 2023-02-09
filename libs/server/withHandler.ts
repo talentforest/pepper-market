@@ -6,18 +6,20 @@ export interface ResponseType {
 }
 
 interface ConfigType {
-  method: 'GET' | 'POST' | 'DELETE';
+  methods: method[];
   handler: (req: NextApiRequest, res: NextApiResponse) => void;
   isPrivate?: boolean;
 }
 
+type method = 'GET' | 'POST' | 'DELETE';
+
 export default function withHandler({
-  method,
+  methods,
   handler,
   isPrivate = true,
 }: ConfigType) {
   return function (req: NextApiRequest, res: NextApiResponse) {
-    if (req.method !== method) {
+    if (req.method && !methods.includes(req.method as method)) {
       return res.status(405).end();
     }
     if (isPrivate && !req.session.user) {

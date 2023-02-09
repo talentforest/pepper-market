@@ -1,10 +1,18 @@
+import { UseFormRegisterReturn } from 'react-hook-form';
+
 interface ITextareaProps {
   placeholder: string;
   labelId?: 'detail' | 'question';
   labelName?: '상세설명' | '질문하기';
+  register?: UseFormRegisterReturn;
 }
 
-const Textarea = ({ placeholder, labelId, labelName }: ITextareaProps) => {
+const Textarea = ({
+  placeholder,
+  labelId,
+  labelName,
+  register,
+}: ITextareaProps) => {
   return (
     <div className='space-y-1 mb-3'>
       {labelId && (
@@ -17,6 +25,7 @@ const Textarea = ({ placeholder, labelId, labelName }: ITextareaProps) => {
         className='resize-none mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 '
         rows={4}
         placeholder={placeholder}
+        {...register}
       />
     </div>
   );

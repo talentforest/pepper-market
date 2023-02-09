@@ -3,11 +3,42 @@ import Layout from '@/components/layout';
 import SquareBtn from '@/components/button/squareBtn';
 import Textarea from '@/components/input/textarea';
 import type { NextPage } from 'next';
+import { useForm } from 'react-hook-form';
+import useMutation from '@/libs/client/useMutation';
+import { useEffect } from 'react';
+import { Product } from '@prisma/client';
+import { useRouter } from 'next/router';
+
+interface UploadProductProps {
+  name: string;
+  price: number;
+  description: string;
+}
+
+interface UploadProductMutation {
+  ok: boolean;
+  product: Product;
+}
 
 const Upload: NextPage = () => {
+  const router = useRouter();
+  const { register, handleSubmit } = useForm<UploadProductProps>();
+  const [uploadProduct, { loading, data }] =
+    useMutation<UploadProductMutation>('/api/products');
+  const onValid = (data: UploadProductProps) => {
+    if (loading) return;
+    uploadProduct(data);
+  };
+
+  useEffect(() => {
+    if (data?.ok) {
+      router.replace(`/products/${data.product.id}`);
+    }
+  }, [data, router]);
+
   return (
     <Layout title='업로드하기' canGoBack>
-      <form className='space-y-3 p-4'>
+      <form className='space-y-3 p-4' onSubmit={handleSubmit(onValid)}>
         <label className='flex h-48 w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 text-gray-600 hover:border-orange-500 hover:text-orange-500'>
           <svg
             className='h-12 w-12'
@@ -25,14 +56,28 @@ const Upload: NextPage = () => {
           </svg>
           <input className='hidden' type='file' />
         </label>
-        <Input type='text' labelName='이름' labelId='name' />
-        <Input type='number' labelName='가격' labelId='price' />
+        <Input
+          register={register('name', { required: true })}
+          type='text'
+          labelName='이름'
+          labelId='name'
+        />
+        <Input
+          register={register('price', { required: true })}
+          type='number'
+          labelName='가격'
+          labelId='price'
+        />
         <Textarea
+          register={register('description', { required: true })}
           placeholder='업로드할 물건의 내용을 적어주세요.'
           labelId='detail'
           labelName='상세설명'
         />
-        <SquareBtn name='아이템 업로드' canSubmit />
+        <SquareBtn
+          name={loading ? '업로드 중...' : '아이템 업로드'}
+          canSubmit
+        />
       </form>
     </Layout>
   );

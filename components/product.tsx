@@ -3,21 +3,24 @@ import IconBox from './iconBox';
 
 interface IProductProps {
   href: string;
+  title: string;
+  subtitle: string;
+  price: number;
 }
 
-const Product = ({ href }: IProductProps) => {
+const ProductBox = ({ href, title, subtitle, price }: IProductProps) => {
   return (
-    <li className='hover:bg-slate-100 p-4 cursor-pointer '>
-      <Link href={href} className='w-full flex justify-between'>
-        <div className='flex space-x-4'>
-          <div className='h-20 w-20 rounded-md bg-gray-400' />
-          <div className='flex flex-col pt-2'>
-            <h3 className='text-sm font-medium text-gray-900'>New iPhone 14</h3>
-            <span className='text-xs text-gray-500'>Black</span>
-            <span className='mt-1 font-medium text-gray-900'>$95</span>
-          </div>
+    <li className='relative hover:bg-slate-100 p-4 cursor-pointer '>
+      <Link href={href} className='w-full flex'>
+        <div className='h-20 w-20 mr-3 rounded-md bg-gray-400' />
+        <div className='flex flex-col justify-center'>
+          <h3 className='text-sm mb-1 font-extrabold text-black'>{title}</h3>
+          <span className='text-xs text-gray-500'>{subtitle}</span>
+          <span className='mt-1 font-medium text-gray-700'>
+            ₩ {price.toLocaleString('ko')}
+          </span>
         </div>
-        <div className='flex items-end justify-end space-x-2'>
+        <div className='absolute bottom-4 right-4  flex items-end justify-end space-x-2'>
           <IconBox iconName='heart' content={1} />
           <IconBox iconName='comment' content={1} />
         </div>
@@ -26,4 +29,4 @@ const Product = ({ href }: IProductProps) => {
   );
 };
 
-export default Product;
+export default ProductBox;
