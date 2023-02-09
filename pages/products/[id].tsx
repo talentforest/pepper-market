@@ -2,25 +2,40 @@ import Link from 'next/link';
 import ProductDesc from '@/components/productDesc';
 import Layout from '@/components/layout';
 import UserBox from '@/components/userBox';
-import useSWR from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Product, User } from '@prisma/client';
+import SquareBtn from '@/components/button/squareBtn';
+import IconBox from '@/components/iconBox';
+import IconBtn from '@/components/button/squareIconBtn';
+import useMutation from '@/libs/client/useMutation';
 
 interface ProductWithUser extends Product {
   user: User;
+  isLiked: boolean;
 }
-interface ItemDetailResponse {
+interface ProductDetailResponse {
   ok: boolean;
   product: ProductWithUser;
   relatedProducts: Product[];
+  isLiked: boolean;
 }
 
 const ProductDetail: NextPage = () => {
   const router = useRouter();
-  const { data, isLoading } = useSWR<ItemDetailResponse>(
+  const { mutate } = useSWRConfig();
+  const { data, mutate: boundMutate } = useSWR<ProductDetailResponse>(
     router.query.id ? `/api/products/${router.query.id}` : null
   );
+  const [toggleFav] = useMutation<ProductDetailResponse>(
+    `/api/products/${router.query.id}/fav`
+  );
+  const onFavClick = () => {
+    toggleFav({});
+    if (!data) return;
+    boundMutate((prev) => prev && { ...prev, isLiked: !prev.isLiked }, false);
+  };
 
   return (
     <Layout hasTabBar canGoBack title='물건 상세보기'>
@@ -37,6 +52,14 @@ const ProductDetail: NextPage = () => {
           description={data?.product?.description!}
           price={data?.product?.price!}
         />
+        <div className='flex space-x-2'>
+          <SquareBtn name='판매자와 채팅하기' canSubmit />
+          <IconBtn
+            iconName={data?.isLiked ? 'solid-heart' : 'outline-heart'}
+            isLiked={data?.isLiked!}
+            onFavClick={onFavClick}
+          />
+        </div>
       </section>
       <section className='p-4'>
         <h2 className='text-2xl font-bold text-gray-900'>비슷한 상품</h2>

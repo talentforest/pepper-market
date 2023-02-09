@@ -6,9 +6,14 @@ import useUser from '@/libs/client/useUser';
 import useSWR from 'swr';
 import { Product } from '@prisma/client';
 
+interface ProductWithCount extends Product {
+  _count: {
+    favs: number;
+  };
+}
 interface ProductsResponse {
   ok: boolean;
-  products: Product[];
+  products: ProductWithCount[];
 }
 
 const Home: NextPage = () => {
@@ -25,6 +30,7 @@ const Home: NextPage = () => {
             title={product.name}
             subtitle={product.description}
             price={product.price}
+            isLikedCount={product._count.favs}
           />
         ))}
       </ul>

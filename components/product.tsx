@@ -6,9 +6,16 @@ interface IProductProps {
   title: string;
   subtitle: string;
   price: number;
+  isLikedCount: number;
 }
 
-const ProductBox = ({ href, title, subtitle, price }: IProductProps) => {
+const ProductBox = ({
+  href,
+  title,
+  subtitle,
+  price,
+  isLikedCount,
+}: IProductProps) => {
   return (
     <li className='relative hover:bg-slate-100 p-4 cursor-pointer '>
       <Link href={href} className='w-full flex'>
@@ -21,8 +28,8 @@ const ProductBox = ({ href, title, subtitle, price }: IProductProps) => {
           </span>
         </div>
         <div className='absolute bottom-4 right-4  flex items-end justify-end space-x-2'>
-          <IconBox iconName='heart' content={1} />
-          <IconBox iconName='comment' content={1} />
+          <IconBox iconName='heart' content={isLikedCount} />
+          <IconBox iconName='comment' content={0} />
         </div>
       </Link>
     </li>

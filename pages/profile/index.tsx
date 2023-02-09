@@ -13,7 +13,7 @@ const Profile: NextPage = () => {
   return (
     <Layout hasTabBar title='나의 페퍼'>
       <div className='p-4'>
-        <UserBox size='lg' type='btn' />
+        <UserBox size='lg' type='btn' avatar={''} username={''} />
         <ul className='mt-10 flex justify-around'>
           {profileBtn.map((btn) => (
             <li key={btn.name} className='flex flex-col items-center'>
@@ -29,7 +29,7 @@ const Profile: NextPage = () => {
         </ul>
         <ul className='mt-12'>
           <li>
-            <UserBox size='sm' type='star' />
+            <UserBox size='sm' type='star' avatar={''} username={''} />
             <p className='mt-4 text-sm text-gray-600'>
               Normally, both your asses would be dead as fucking fried chicken,
               but you happen to pull this shit while I&apos;m in a transitional
