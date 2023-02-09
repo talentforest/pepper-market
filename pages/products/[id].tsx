@@ -6,7 +6,7 @@ import type { NextPage } from 'next';
 const ProductDetail: NextPage = () => {
   return (
     <Layout hasTabBar canGoBack title='물건 상세보기'>
-      <section className='mb-8'>
+      <section className='p-4'>
         <div className='h-96 bg-slate-300 mb-3' />
         <UserBox size='md' type='link' />
         <ProductDesc
@@ -15,7 +15,7 @@ const ProductDetail: NextPage = () => {
           price={500400}
         />
       </section>
-      <section>
+      <section className='p-4'>
         <h2 className='text-2xl font-bold text-gray-900'>비슷한 상품</h2>
         <ul className=' mt-6 grid grid-cols-2 gap-4'>
           {[1, 2, 3, 4, 5, 6].map((item) => (

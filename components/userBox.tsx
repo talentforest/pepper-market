@@ -1,4 +1,5 @@
 import { cls } from '@/libs/client/utils';
+import Link from 'next/link';
 import StarRate from './starRate';
 
 interface IUserBoxProps {
@@ -42,14 +43,17 @@ const UserBox = ({ size, type, time }: IUserBoxProps) => {
           스티브 쟙
         </span>
         {type === 'link' && (
-          <span className='text-xs text-gray-500 font-medium'>
+          <Link href={'/profile'} className='text-xs text-gray-500 font-medium'>
             프로필 보기 &rarr;
-          </span>
+          </Link>
         )}
         {type === 'btn' && (
-          <span className='text-xs text-gray-500 font-medium'>
+          <Link
+            href={'/profile/edit'}
+            className='text-xs text-gray-500 font-medium'
+          >
             프로필 수정하기 &rarr;
-          </span>
+          </Link>
         )}
         {time && (
           <span className='text-xs text-gray-500 font-medium'>{time} 전</span>

@@ -6,7 +6,7 @@ import type { NextPage } from 'next';
 const Write: NextPage = () => {
   return (
     <Layout title='동네생활 글 작성하기' canGoBack>
-      <form>
+      <form className='p-4'>
         <Textarea
           labelName='질문하기'
           labelId='question'

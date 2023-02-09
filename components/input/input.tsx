@@ -39,7 +39,7 @@ const Input = ({
       {labelName === '핸드폰 번호' && (
         <div className='relative flex rounded-md shadow-sm'>
           <input
-            id='핸드폰 번호'
+            id={labelId}
             type='number'
             placeholder='01012345678'
             required={required}

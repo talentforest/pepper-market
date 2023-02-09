@@ -6,7 +6,7 @@ import type { NextPage } from 'next';
 const EditProfile: NextPage = () => {
   return (
     <Layout title='프로필 수정' canGoBack>
-      <form className='space-y-4'>
+      <form className='space-y-4 p-4'>
         <div className='flex items-center space-x-3'>
           <div className='h-14 w-14 rounded-full bg-slate-500' />
           <label
@@ -24,7 +24,7 @@ const EditProfile: NextPage = () => {
         </div>
         <Input type='email' labelName='이메일 주소' labelId='email' />
         <Input type='number' labelName='핸드폰 번호' labelId='phone' />
-        <SquareBtn name='프로필 업데이트하기' />
+        <SquareBtn canSubmit name='프로필 업데이트하기' />
       </form>
     </Layout>
   );

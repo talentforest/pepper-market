@@ -7,7 +7,7 @@ import type { NextPage } from 'next';
 const Create: NextPage = () => {
   return (
     <Layout title='라이브 생성' canGoBack>
-      <form className='space-y-5'>
+      <form className='space-y-5 p-4'>
         <Input type='text' labelName='이름' labelId='name' />
         <Input type='number' labelName='가격' labelId='price' />
         <Textarea

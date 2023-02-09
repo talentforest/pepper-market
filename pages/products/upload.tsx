@@ -7,7 +7,7 @@ import type { NextPage } from 'next';
 const Upload: NextPage = () => {
   return (
     <Layout title='업로드하기' canGoBack>
-      <form className='space-y-3'>
+      <form className='space-y-3 p-4'>
         <label className='flex h-48 w-full cursor-pointer items-center justify-center rounded-md border-2 border-dashed border-gray-300 text-gray-600 hover:border-orange-500 hover:text-orange-500'>
           <svg
             className='h-12 w-12'

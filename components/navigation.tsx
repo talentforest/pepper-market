@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default function Nav() {
   const { pathname } = useRouter();
   const getCurPathStyle = (path: string) =>
-    pathname === path ? 'text-orange-500' : '';
+    pathname === path ? 'text-orange-500' : 'hover:text-gray-400';
 
   return (
     <nav className='fixed bottom-0 w-full max-w-md border border-t bg-white px-8 py-2 text-xs text-gray-600'>

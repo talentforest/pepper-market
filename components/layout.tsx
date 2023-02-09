@@ -18,9 +18,7 @@ export default function Layout({
   return (
     <div className='m-auto min-h-screen max-w-md bg-white'>
       {(title || canGoBack) && <Header title={title} canGoBack={canGoBack} />}
-      <main className={cls('py-16 px-4', hasTabBar ? 'pb-24' : '')}>
-        {children}
-      </main>
+      <main className={cls('py-12', hasTabBar ? 'pb-24' : '')}>{children}</main>
       {hasTabBar && <Nav />}
     </div>
   );
