@@ -24,7 +24,7 @@ const ProductBox = ({
           <h3 className='text-sm mb-1 font-extrabold text-black'>{title}</h3>
           <span className='text-xs text-gray-500'>{subtitle}</span>
           <span className='mt-1 font-medium text-gray-700'>
-            ₩ {price.toLocaleString('ko')}
+            ₩ {price && price.toLocaleString('ko')}
           </span>
         </div>
         <div className='absolute bottom-4 right-4  flex items-end justify-end space-x-2'>

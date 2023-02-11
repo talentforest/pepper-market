@@ -6,11 +6,19 @@ interface IUserBoxProps {
   type: 'star' | 'link' | 'btn' | 'time';
   time?: string;
   size: 'xs' | 'sm' | 'md' | 'lg';
+  rate?: number;
   avatar: string;
   username: string;
 }
 
-const UserBox = ({ size, type, time, avatar, username }: IUserBoxProps) => {
+const UserBox = ({
+  size,
+  type,
+  rate,
+  time,
+  avatar,
+  username,
+}: IUserBoxProps) => {
   const formatter = new Intl.RelativeTimeFormat('ko');
 
   return (
@@ -63,7 +71,7 @@ const UserBox = ({ size, type, time, avatar, username }: IUserBoxProps) => {
         {time && (
           <span className='text-xs text-gray-500 font-medium'>{time} 전</span>
         )}
-        {type === 'star' && <StarRate />}
+        {rate && <StarRate rate={rate} />}
       </div>
     </header>
   );

@@ -1,7 +1,18 @@
 import CircleBtn from '@/components/button/circleBtn';
 import Layout from '@/components/layout';
 import UserBox from '@/components/userBox';
+import useUser from '@/libs/client/useUser';
+import { Review, User } from '@prisma/client';
 import { NextPage } from 'next';
+import useSWR from 'swr';
+
+interface ReviewWithUser extends Review {
+  createdBy: User;
+}
+interface ReviewsResponse {
+  ok: boolean;
+  reviews: ReviewWithUser[];
+}
 
 const Profile: NextPage = () => {
   const profileBtn = [
@@ -9,11 +20,19 @@ const Profile: NextPage = () => {
     { route: 'bought', name: '구매내역' },
     { route: 'loved', name: '관심목록' },
   ];
+  const { user, isLoading } = useUser();
+  const { data } = useSWR<ReviewsResponse>('/api/reviews');
 
   return (
     <Layout hasTabBar title='나의 페퍼'>
-      <div className='p-4'>
-        <UserBox size='lg' type='btn' avatar={''} username={''} />
+      <section className='p-4'>
+        <h1>프로필</h1>
+        <UserBox
+          size='lg'
+          type='btn'
+          avatar={user?.avatar}
+          username={user?.name}
+        />
         <ul className='mt-10 flex justify-around'>
           {profileBtn.map((btn) => (
             <li key={btn.name} className='flex flex-col items-center'>
@@ -27,20 +46,24 @@ const Profile: NextPage = () => {
             </li>
           ))}
         </ul>
-        <ul className='mt-12'>
-          <li>
-            <UserBox size='sm' type='star' avatar={''} username={''} />
-            <p className='mt-4 text-sm text-gray-600'>
-              Normally, both your asses would be dead as fucking fried chicken,
-              but you happen to pull this shit while I&apos;m in a transitional
-              period so I don&apos;t wanna kill you, I wanna help you. But I
-              can&apos;t give you this case, it don&apos;t belong to me.
-              Besides, I&apos;ve already been through too much shit this morning
-              over this case to hand it over to your dumb ass.
-            </p>
-          </li>
+      </section>
+      <section className='p-4'>
+        <h1>리뷰 목록</h1>
+        <ul className='mt-2'>
+          {data?.reviews.map((review) => (
+            <li key={review.id}>
+              <UserBox
+                size='sm'
+                type='star'
+                rate={review.rate || 0}
+                avatar={review.createdBy.avatar || ''}
+                username={review.createdBy.name || '익명'}
+              />
+              <p className='mt-4 text-sm text-gray-600'>{review.review}</p>
+            </li>
+          ))}
         </ul>
-      </div>
+      </section>
     </Layout>
   );
 };

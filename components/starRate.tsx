@@ -1,4 +1,8 @@
-const StarRate = () => {
+interface IStarRateProps {
+  rate: number;
+}
+
+const StarRate = ({ rate }: IStarRateProps) => {
   return (
     <div className='flex items-center -ml-1'>
       {[1, 2, 3, 4, 5].map((star) => (
