@@ -9,11 +9,10 @@ import useMutation from '@/libs/client/useMutation';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Answer, Post, User } from '@prisma/client';
+import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 
-interface AnswerWithUser extends Answer {
-  user: User;
-}
-interface PostWithUser extends Post {
+export interface PostWithUser extends Post {
   answers: AnswerWithUser[];
   user: User;
   _count: {
@@ -26,13 +25,29 @@ interface CommunityPostResponse {
   post: PostWithUser;
   myCuriosity: boolean;
 }
+interface AnswerWithUser extends Answer {
+  user: User;
+}
+interface AnswerForm {
+  answer: string;
+}
+interface AnswerResponse {
+  ok: boolean;
+  response: Answer;
+}
 
 const CommunityPostDetail: NextPage = () => {
   const router = useRouter();
+  const { register, handleSubmit, reset } = useForm<AnswerForm>();
   const { data, mutate } = useSWR<CommunityPostResponse>(
     router.query.id ? `/api/posts/${router.query.id}` : null
   );
-  const [curiosity] = useMutation(`/api/posts/${router.query.id}/curiosity`);
+  const [curiosity, { loading }] = useMutation<CommunityPostResponse>(
+    `/api/posts/${router.query.id}/curiosity`
+  );
+  const [sendAnswer, { data: answerData, loading: answerLoading }] =
+    useMutation<AnswerResponse>(`/api/posts/${router.query.id}/answers`);
+
   const onCuriosityClick = () => {
     if (!data) return;
     mutate(
@@ -51,8 +66,22 @@ const CommunityPostDetail: NextPage = () => {
       },
       false
     );
-    curiosity({});
+    if (!loading) {
+      curiosity({});
+    }
   };
+
+  const onValid = (form: AnswerForm) => {
+    if (answerLoading) return;
+    sendAnswer(form);
+  };
+
+  useEffect(() => {
+    if (answerData && answerData.ok) {
+      reset();
+      mutate();
+    }
+  }, [answerData, reset, mutate]);
 
   return (
     <Layout title='동네 질문' canGoBack>
@@ -77,10 +106,13 @@ const CommunityPostDetail: NextPage = () => {
           />
           <IconBox
             iconName='comment'
-            content={`답변 ${data?.post?._count.answers || 0}`}
+            content={`댓글 ${data?.post?._count.answers || 0}`}
             onMutateClick={onCuriosityClick}
           />
         </div>
+      </article>
+      <section className='p-4 pt-0'>
+        <h4>댓글 목록</h4>
         {data?.post.answers.map((answer) => (
           <div key={answer.id} className='my-5 flex flex-col items-start'>
             <UserBox
@@ -93,11 +125,17 @@ const CommunityPostDetail: NextPage = () => {
             <p className='p-1 text-gray-700'>{answer.answer}</p>
           </div>
         ))}
-        <div className='pt-3'>
-          <Textarea placeholder='질문에 대한 답을 아신다면 댓글을 달아주세요!' />
-          <SquareBtn name='답장하기' canSubmit />
-        </div>
-      </article>
+        <form className='pt-3' onSubmit={handleSubmit(onValid)}>
+          <Textarea
+            register={register('answer', { required: true, minLength: 5 })}
+            placeholder='질문에 대한 답을 아신다면 댓글을 달아주세요!'
+          />
+          <SquareBtn
+            name={answerLoading ? '등록 중...' : '댓글 작성하기'}
+            canSubmit
+          />
+        </form>
+      </section>
     </Layout>
   );
 };

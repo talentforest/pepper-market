@@ -11,7 +11,6 @@ import useMutation from '@/libs/client/useMutation';
 interface WriteForm {
   question: string;
 }
-
 interface WriteResponse {
   ok: boolean;
   post: Post;
@@ -25,6 +24,7 @@ const Write: NextPage = () => {
     if (loading) return;
     post(data);
   };
+
   useEffect(() => {
     if (data && data.ok) {
       router.push(`/community/${data.post.id}`);

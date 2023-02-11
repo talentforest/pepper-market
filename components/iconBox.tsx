@@ -3,7 +3,7 @@ import { cls } from '@/libs/client/utils';
 interface IIconBoxProps {
   iconName: 'heart' | 'comment' | 'curiosity';
   content: string | number;
-  onMutateClick: () => void;
+  onMutateClick?: () => void;
   myCuriosity?: boolean;
 }
 
