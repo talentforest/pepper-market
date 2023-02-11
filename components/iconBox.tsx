@@ -1,9 +1,18 @@
+import { cls } from '@/libs/client/utils';
+
 interface IIconBoxProps {
   iconName: 'heart' | 'comment' | 'curiosity';
   content: string | number;
+  onMutateClick: () => void;
+  myCuriosity?: boolean;
 }
 
-const IconBox = ({ iconName, content }: IIconBoxProps) => {
+const IconBox = ({
+  iconName,
+  content,
+  myCuriosity,
+  onMutateClick,
+}: IIconBoxProps) => {
   const getSvgPath = () => {
     switch (iconName) {
       case 'curiosity':
@@ -16,9 +25,14 @@ const IconBox = ({ iconName, content }: IIconBoxProps) => {
         break;
     }
   };
-
   return (
-    <div className='flex items-center space-x-1.5 text-sm  text-gray-600'>
+    <button
+      onClick={onMutateClick}
+      className={cls(
+        myCuriosity ? 'text-green-500' : 'text-gray-600',
+        'hover:-translate-y-0.5 hover:scale-101 transition select-none cursor-pointer flex items-center space-x-1.5 text-sm'
+      )}
+    >
       <svg
         className='h-4 w-4'
         fill='none'
@@ -33,8 +47,8 @@ const IconBox = ({ iconName, content }: IIconBoxProps) => {
           d={getSvgPath()}
         ></path>
       </svg>
-      <span>{content}</span>
-    </div>
+      <span>{content ? content : 0}</span>
+    </button>
   );
 };
 

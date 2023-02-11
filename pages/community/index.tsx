@@ -4,21 +4,23 @@ import type { NextPage } from 'next';
 import IconBox from '@/components/iconBox';
 import Tag from '@/components/tag';
 import Link from 'next/link';
+import useSWR from 'swr';
 
 const Community: NextPage = () => {
+  // const { data } = useSWR('/api/posts');
+
   return (
     <Layout hasTabBar title='동네생활'>
       <ul>
-        {[1, 2, 3, 4, 5, 6].map((post) => (
-          <li
-            key={post}
-            className='hover:bg-slate-100 p-4 pb-0 flex cursor-pointer flex-col items-start'
-          >
-            <Link href={`/community/${post}`}>
+        {[1].map((post) => (
+          <li key={post} className='hover:bg-slate-100 p-4 pb-0 cursor-pointer'>
+            <Link
+              href={`/community/${post}`}
+              className='flex flex-col items-start'
+            >
               <Tag />
               <div className='mt-2 text-gray-700'>
-                <span className='font-medium text-orange-500'>Q.</span> 서울에
-                있는 순대 트럭 언제 오시는지 아시나요?ㅠㅠ 너무 먹고 싶어요.
+                <span className='font-medium text-orange-500'>Q.</span>
               </div>
               <div className='mt-5 flex w-full items-center justify-between text-xs font-medium text-gray-500'>
                 <span>니꼬</span>

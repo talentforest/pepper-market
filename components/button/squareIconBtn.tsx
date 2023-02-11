@@ -3,7 +3,7 @@ import { cls } from '@/libs/client/utils';
 interface IIconBtnProps {
   iconName: 'outline-heart' | 'solid-heart' | 'twitter' | 'github';
   onFavClick?: () => void;
-  isLiked: boolean;
+  isLiked?: boolean;
 }
 
 const IconBtn = ({ iconName, onFavClick, isLiked }: IIconBtnProps) => {

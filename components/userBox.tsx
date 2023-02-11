@@ -4,13 +4,15 @@ import StarRate from './starRate';
 
 interface IUserBoxProps {
   type: 'star' | 'link' | 'btn' | 'time';
-  time?: number;
+  time?: string;
   size: 'xs' | 'sm' | 'md' | 'lg';
   avatar: string;
   username: string;
 }
 
 const UserBox = ({ size, type, time, avatar, username }: IUserBoxProps) => {
+  const formatter = new Intl.RelativeTimeFormat('ko');
+
   return (
     <header className='py-2 w-full flex items-center space-x-2'>
       <img
