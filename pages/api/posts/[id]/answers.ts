@@ -12,7 +12,6 @@ async function handler(
     session: { user },
     body: { answer },
   } = req;
-  console.log(answer);
   const newAnswer = await client.answer.create({
     data: {
       user: {

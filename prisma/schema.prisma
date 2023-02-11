@@ -76,6 +76,8 @@ model Post {
   question    String      @db.MediumText
   answers     Answer[]
   curiosities Curiosity[]
+  latitude    Float?
+  longitude   Float?
 
   @@index([userId])
 }
