@@ -1,9 +1,9 @@
-import IconBtn from '@/components/button/squareIconBtn';
+import IconBtn from '@/components/button/square-icon-btn';
 import Input from '@/components/input/input';
-import SquareBtn from '@/components/button/squareBtn';
-import TabBtn from '@/components/button/tabBtn';
+import SquareBtn from '@/components/button/square-btn';
+import TabBtn from '@/components/button/tab-btn';
 import useMutation from '@/libs/client/useMutation';
-import TokenInput from '@/components/input/tokenInput';
+import TokenInput from '@/components/input/token-input';
 import { KeyboardEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';

@@ -1,6 +1,6 @@
 import { cls } from '@/libs/client/utils';
 import Link from 'next/link';
-import StarRate from './starRate';
+import StarRate from './star-rate';
 
 interface IUserBoxProps {
   type: 'star' | 'link' | 'btn' | 'time';

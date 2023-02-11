@@ -1,8 +1,8 @@
-import ProductDesc from '@/components/productDesc';
+import ProductDesc from '@/components/product-desc';
 import Keyboard from '@/components/keyboard';
 import Layout from '@/components/layout';
-import ChatList from '@/components/chatList';
-import UserBox from '@/components/userBox';
+import ChatList from '@/components/chat-list';
+import UserBox from '@/components/user-box';
 import type { NextPage } from 'next';
 
 const LiveDetail: NextPage = () => {

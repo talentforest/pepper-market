@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Layout from '@/components/layout';
-import CircleBtn from '@/components/button/circleBtn';
+import CircleBtn from '@/components/button/circle-btn';
 import ProductBox from '@/components/product';
 import useUser from '@/libs/client/useUser';
 import useSWR from 'swr';

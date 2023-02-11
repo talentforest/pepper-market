@@ -16,20 +16,18 @@ interface ProductListResponse {
 export default function ProductList({ kind }: ProductListProps) {
   const { data } = useSWR<ProductListResponse>(`/api/users/me/${kind}`);
 
-  return (
-    data && (
-      <>
-        {data[kind]?.map((record) => (
-          <ProductBox
-            key={record.product.id}
-            href={`${record.product.id}`}
-            title={record.product.name}
-            subtitle={record.product.description}
-            price={record.product.price}
-            isLikedCount={record.product._count?.favs}
-          />
-        ))}
-      </>
-    )
-  );
+  return data ? (
+    <>
+      {data[kind]?.map((record) => (
+        <ProductBox
+          key={record.product.id}
+          href={`${record.product.id}`}
+          title={record.product.name}
+          subtitle={record.product.description}
+          price={record.product.price}
+          isLikedCount={record.product._count?.favs}
+        />
+      ))}
+    </>
+  ) : null;
 }

@@ -1,9 +1,9 @@
-import IconBox from '@/components/iconBox';
+import IconBox from '@/components/icon-box';
 import Layout from '@/components/layout';
-import SquareBtn from '@/components/button/squareBtn';
+import SquareBtn from '@/components/button/square-btn';
 import Tag from '@/components/tag';
 import Textarea from '@/components/input/textarea';
-import UserBox from '@/components/userBox';
+import UserBox from '@/components/user-box';
 import useSWR from 'swr';
 import useMutation from '@/libs/client/useMutation';
 import type { NextPage } from 'next';

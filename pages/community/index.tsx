@@ -1,7 +1,7 @@
-import CircleBtn from '@/components/button/circleBtn';
+import CircleBtn from '@/components/button/circle-btn';
 import Layout from '../../components/layout';
 import type { NextPage } from 'next';
-import IconBox from '@/components/iconBox';
+import IconBox from '@/components/icon-box';
 import Tag from '@/components/tag';
 import Link from 'next/link';
 import useSWR from 'swr';

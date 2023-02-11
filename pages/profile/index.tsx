@@ -1,6 +1,6 @@
-import CircleBtn from '@/components/button/circleBtn';
+import CircleBtn from '@/components/button/circle-btn';
 import Layout from '@/components/layout';
-import UserBox from '@/components/userBox';
+import UserBox from '@/components/user-box';
 import useUser from '@/libs/client/useUser';
 import { Review, User } from '@prisma/client';
 import { NextPage } from 'next';

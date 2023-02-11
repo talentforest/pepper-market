@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import ProductDesc from '@/components/productDesc';
+import ProductDesc from '@/components/product-desc';
 import Layout from '@/components/layout';
-import UserBox from '@/components/userBox';
+import UserBox from '@/components/user-box';
 import useSWR, { useSWRConfig } from 'swr';
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Product, User } from '@prisma/client';
-import SquareBtn from '@/components/button/squareBtn';
-import IconBox from '@/components/iconBox';
-import IconBtn from '@/components/button/squareIconBtn';
+import SquareBtn from '@/components/button/square-btn';
+import IconBox from '@/components/icon-box';
+import IconBtn from '@/components/button/square-icon-btn';
 import useMutation from '@/libs/client/useMutation';
 
 interface ProductWithUser extends Product {

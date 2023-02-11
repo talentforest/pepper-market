@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import IconBox from './iconBox';
+import IconBox from './icon-box';
 
 interface IProductProps {
   href: string;

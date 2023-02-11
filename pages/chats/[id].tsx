@@ -1,4 +1,4 @@
-import ChatList from '@/components/chatList';
+import ChatList from '@/components/chat-list';
 import Keyboard from '@/components/keyboard';
 import Layout from '@/components/layout';
 import type { NextPage } from 'next';

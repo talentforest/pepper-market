@@ -1,6 +1,6 @@
 import Input from '@/components/input/input';
 import Layout from '@/components/layout';
-import SquareBtn from '@/components/button/squareBtn';
+import SquareBtn from '@/components/button/square-btn';
 import Textarea from '@/components/input/textarea';
 import type { NextPage } from 'next';
 

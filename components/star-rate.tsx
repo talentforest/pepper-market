@@ -1,14 +1,17 @@
+import { cls } from '@/libs/client/utils';
+
 interface IStarRateProps {
   rate: number;
 }
 
 const StarRate = ({ rate }: IStarRateProps) => {
+  console.log(rate);
   return (
     <div className='flex items-center -ml-1'>
       {[1, 2, 3, 4, 5].map((star) => (
         <svg
           key={star}
-          className='h-5 w-5 text-yellow-400'
+          className={cls(rate >= star ? 'text-yellow-400' : '', 'h-5 w-5')}
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 20 20'
           fill='currentColor'
