@@ -14,12 +14,13 @@ interface ReviewsResponse {
   reviews: ReviewWithUser[];
 }
 
+const profileBtns = [
+  { route: 'sold', name: '판매내역' },
+  { route: 'bought', name: '구매내역' },
+  { route: 'loved', name: '관심목록' },
+];
+
 const Profile: NextPage = () => {
-  const profileBtn = [
-    { route: 'sold', name: '판매내역' },
-    { route: 'bought', name: '구매내역' },
-    { route: 'loved', name: '관심목록' },
-  ];
   const { user, isLoading } = useUser();
   const { data } = useSWR<ReviewsResponse>('/api/reviews');
 
@@ -34,7 +35,7 @@ const Profile: NextPage = () => {
           username={user?.name}
         />
         <ul className='mt-10 flex justify-around'>
-          {profileBtn.map((btn) => (
+          {profileBtns.map((btn) => (
             <li key={btn.name} className='flex flex-col items-center'>
               <CircleBtn
                 href={`/profile/${btn.route}`}
@@ -50,7 +51,7 @@ const Profile: NextPage = () => {
       <section className='p-4'>
         <h1>리뷰 목록</h1>
         <ul className='mt-2'>
-          {data?.reviews.map((review) => (
+          {data?.reviews?.map((review) => (
             <li key={review.id}>
               <UserBox
                 size='sm'

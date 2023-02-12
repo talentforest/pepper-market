@@ -13,7 +13,6 @@ interface IFavsResponse {
 
 const Loved: NextPage = () => {
   const { data } = useSWR<IFavsResponse>('/api/users/me/favs');
-  console.log(data?.favs);
 
   return (
     <Layout title='관심목록' canGoBack>

@@ -32,7 +32,7 @@ const Community: NextPage = () => {
   return (
     <Layout hasTabBar title='동네생활'>
       <ul>
-        {data?.posts.map((post) => (
+        {data?.posts?.map((post) => (
           <li
             key={post.id}
             className='hover:bg-slate-100 p-4 pb-0 cursor-pointer'
@@ -55,7 +55,7 @@ const Community: NextPage = () => {
               <div className='mt-10 flex w-full space-x-5 border-y border-b-2 py-2 text-gray-700'>
                 <IconBox
                   iconName='curiosity'
-                  content={`궁금해요 ${post?._count.curiosities || 0}`}
+                  content={`궁금해요 ${post?._count?.curiosities || 0}`}
                 />
                 <IconBox
                   iconName='comment'
