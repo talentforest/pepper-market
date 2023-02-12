@@ -189,7 +189,7 @@ model Stream {
   price          Int
   user           User            @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId         Int
-  StreamMessages StreamMessage[]
+  streamMessages StreamMessage[]
 
   @@index([userId])
 }
@@ -201,9 +201,9 @@ model StreamMessage {
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    Int
   message   String   @db.MediumText
-  Stream    Stream   @relation(fields: [StreamId], references: [id], onDelete: Cascade)
-  StreamId  Int
+  stream    Stream   @relation(fields: [streamId], references: [id], onDelete: Cascade)
+  streamId  Int
 
   @@index([userId])
-  @@index([StreamId])
+  @@index([streamId])
 }

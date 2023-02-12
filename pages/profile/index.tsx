@@ -31,8 +31,8 @@ const Profile: NextPage = () => {
         <UserBox
           size='lg'
           type='btn'
-          avatar={user?.avatar}
-          username={user?.name}
+          avatar={user?.avatar || '익명'}
+          username={user?.name || ''}
         />
         <ul className='mt-10 flex justify-around'>
           {profileBtns.map((btn) => (

@@ -1,10 +1,22 @@
+import useUser from '@/libs/client/useUser';
+import { StreamMessage } from '@/pages/streams/[id]';
+import { Fragment } from 'react';
 import Chat from './chat';
 
-const ChatList = () => {
+interface IChatListProps {
+  messages: StreamMessage[];
+}
+
+const ChatList = ({ messages }: IChatListProps) => {
+  const { user } = useUser();
+
   return (
     <ul className='h-[50vh] space-y-4 overflow-y-scroll pt-3 px-2 pb-6 mb-8'>
-      <Chat content='안녕하세요~ 거래하고 싶어요!' mine />
-      <Chat content='반갑습니다~ 장소는 어디가 괜찮으세요?' />
+      {messages.map((message) => (
+        <Fragment key={message.id}>
+          <Chat content={message.message} mine={message.user.id === user?.id} />
+        </Fragment>
+      ))}
     </ul>
   );
 };

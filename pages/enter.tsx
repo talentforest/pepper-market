@@ -48,6 +48,7 @@ export default function Enter() {
   ] = useMutation<MutationResult>('/api/users/confirm');
 
   const router = useRouter();
+
   useEffect(() => {
     if (tab === 'email') {
       setFocus('email');

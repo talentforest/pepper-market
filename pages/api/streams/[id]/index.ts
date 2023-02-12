@@ -9,7 +9,6 @@ async function handler(
 ) {
   const {
     query: { id },
-    session: { user },
   } = req;
 
   const stream = await client.stream.findUnique({
@@ -17,12 +16,19 @@ async function handler(
       id: Number(id),
     },
     include: {
-      user: {
+      streamMessages: {
         select: {
           id: true,
-          name: true,
-          avatar: true,
+          message: true,
+          user: {
+            select: {
+              avatar: true,
+              id: true,
+            },
+          },
         },
+        take: 10,
+        skip: 20,
       },
     },
   });
