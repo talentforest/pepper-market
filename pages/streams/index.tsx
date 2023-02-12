@@ -1,18 +1,27 @@
 import CircleBtn from '@/components/button/circle-btn';
 import Layout from '@/components/layout';
+import { Stream } from '@prisma/client';
 import type { NextPage } from 'next';
 import Link from 'next/link';
+import useSWR from 'swr';
+
+interface StreamsResponse {
+  ok: boolean;
+  streams: Stream[];
+}
 
 const Streams: NextPage = () => {
+  const { data } = useSWR<StreamsResponse>('/api/streams');
+
   return (
     <Layout title='라이브' hasTabBar>
       <ul className='divide-y'>
-        {[1, 2, 3, 4, 5, 6, 7].map((stream) => (
-          <li key={stream} className='hover:bg-slate-100 p-4'>
-            <Link href={`/streams/${stream}`}>
+        {data?.streams?.map((stream) => (
+          <li key={stream.id} className='hover:bg-slate-100 p-4'>
+            <Link href={`/streams/${stream.id}`}>
               <div className='aspect-video w-full rounded-md bg-slate-300 shadow-sm' />
               <h1 className='mt-2 text-xl font-bold text-gray-900'>
-                갤럭시 S50
+                {stream.name}
               </h1>
             </Link>
           </li>

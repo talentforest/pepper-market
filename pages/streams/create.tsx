@@ -53,11 +53,14 @@ const Create: NextPage = () => {
         />
         <Textarea
           register={register('description', { required: true })}
-          placeholder='상세설명을 적어주세요.'
+          placeholder='라이브에 대한 상세설명을 적어주세요.'
           labelId='description'
           labelName='상세설명'
         />
-        <SquareBtn name={loading ? '생성중' : '리이브 생성하기'} canSubmit />
+        <SquareBtn
+          name={loading ? '라이브 생성중' : '라이브 생성하기'}
+          canSubmit
+        />
       </form>
     </Layout>
   );
