@@ -5,7 +5,7 @@ import ChatList from '@/components/chat-list';
 import UserBox from '@/components/user-box';
 import type { NextPage } from 'next';
 
-const LiveDetail: NextPage = () => {
+const StreamsDetail: NextPage = () => {
   return (
     <Layout title='라이브 상세보기' canGoBack>
       <section className='p-4'>
@@ -26,4 +26,4 @@ const LiveDetail: NextPage = () => {
   );
 };
 
-export default LiveDetail;
+export default StreamsDetail;

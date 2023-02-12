@@ -1,8 +1,8 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 interface InputProps {
-  labelName: '이메일 주소' | '핸드폰 번호' | '이름' | '가격';
-  labelId: 'email' | 'phone' | 'name' | 'price';
+  labelName: '이메일 주소' | '핸드폰 번호' | '이름' | '가격' | '제목';
+  labelId: 'email' | 'phone' | 'name' | 'price' | 'title';
   type: 'text' | 'email' | 'number';
   required?: boolean;
   placeholder?: string;

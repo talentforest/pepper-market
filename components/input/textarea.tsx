@@ -2,7 +2,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 interface ITextareaProps {
   placeholder: string;
-  labelId?: 'detail' | 'question';
+  labelId?: 'description' | 'question';
   labelName?: '상세설명' | '질문하기';
   register?: UseFormRegisterReturn;
 }
