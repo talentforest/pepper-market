@@ -1,6 +1,12 @@
+import useUser from '@/libs/client/useUser';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { SWRConfig } from 'swr';
+
+const LoginCheck = () => {
+  useUser();
+  return null;
+};
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -10,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
           fetch(url).then((response) => response.json()),
       }}
     >
+      <LoginCheck />
       <Component {...pageProps} />
     </SWRConfig>
   );
